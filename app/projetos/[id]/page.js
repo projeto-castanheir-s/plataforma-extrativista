@@ -1,4 +1,5 @@
 'use client';
+import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Header from '@/components/Header';
 import Card from '@/components/Card';
@@ -14,6 +15,7 @@ import { Calendar, DollarSign, TrendingUp, CheckCircle } from 'lucide-react';
 export default function ProjetoPage({ params }) {
   const router = useRouter();
   const { id } = params;
+  const [activeTab, setActiveTab] = useState(0);
   
   const { 
     getProjetoById, 
@@ -137,7 +139,10 @@ export default function ProjetoPage({ params }) {
               <p className="text-sm text-gray-700 mb-4">
                 Informações sobre a execução física do projeto
               </p>
-              <button className="text-primary-600 hover:text-primary-700 font-medium text-sm">
+              <button 
+                onClick={() => setActiveTab(3)}
+                className="text-primary-600 hover:text-primary-700 font-medium text-sm"
+              >
                 Ver Detalhes →
               </button>
             </Card>
@@ -145,7 +150,10 @@ export default function ProjetoPage({ params }) {
               <p className="text-sm text-gray-700 mb-4">
                 Informações financeiras e orçamentárias
               </p>
-              <button className="text-green-600 hover:text-green-700 font-medium text-sm">
+              <button 
+                onClick={() => setActiveTab(1)}
+                className="text-green-600 hover:text-green-700 font-medium text-sm"
+              >
                 Ver Detalhes →
               </button>
             </Card>
@@ -428,7 +436,11 @@ export default function ProjetoPage({ params }) {
 
         {/* Abas */}
         <Card>
-          <Tabs tabs={tabs} defaultTab={0} />
+          <Tabs 
+            tabs={tabs} 
+            activeTab={activeTab} 
+            onTabChange={setActiveTab}
+          />
         </Card>
       </main>
     </>
