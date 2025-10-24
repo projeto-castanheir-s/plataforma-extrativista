@@ -1,5 +1,5 @@
 'use client';
-import { use, useState } from 'react';
+import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Header from '@/components/Header';
 import Card from '@/components/Card';
@@ -82,8 +82,7 @@ const entidadeConfig = {
 
 export default function CadastroEntidadePage({ params }) {
   const router = useRouter();
-  const resolvedParams = use(params);
-  const { entidade } = resolvedParams;
+  const { entidade } = params;
   
   const store = useStore();
   const [isAdding, setIsAdding] = useState(false);
