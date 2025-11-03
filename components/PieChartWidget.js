@@ -38,7 +38,7 @@ export default function PieChartWidget({ data, title, dataKey = 'value', nameKey
   return (
     <div className="w-full">
       {title && <h4 className="text-sm font-semibold text-gray-700 mb-4">{title}</h4>}
-      <ResponsiveContainer width="100%" height={280}>
+      <ResponsiveContainer width="100%" height={280} minWidth={280}>
         <PieChart>
           <Pie
             data={data}
@@ -46,7 +46,7 @@ export default function PieChartWidget({ data, title, dataKey = 'value', nameKey
             cy="50%"
             labelLine={false}
             label={renderCustomLabel}
-            outerRadius={90}
+            outerRadius={80}
             fill="#8884d8"
             dataKey={dataKey}
           >
@@ -59,8 +59,8 @@ export default function PieChartWidget({ data, title, dataKey = 'value', nameKey
             contentStyle={{ fontSize: '12px' }}
           />
           <Legend 
-            wrapperStyle={{ fontSize: '11px' }}
-            iconSize={10}
+            wrapperStyle={{ fontSize: '10px', paddingTop: '10px' }}
+            iconSize={8}
           />
         </PieChart>
       </ResponsiveContainer>

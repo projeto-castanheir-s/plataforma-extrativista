@@ -13,28 +13,28 @@ export default function BarChartWidget({ data, title, dataKey = 'value', nameKey
   return (
     <div className="w-full">
       {title && <h4 className="text-sm font-semibold text-gray-700 mb-4">{title}</h4>}
-      <ResponsiveContainer width="100%" height={280}>
-        <BarChart data={data} margin={{ top: 5, right: 10, left: 0, bottom: 5 }}>
+      <ResponsiveContainer width="100%" height={280} minWidth={280}>
+        <BarChart data={data} margin={{ top: 5, right: 10, left: -10, bottom: 5 }}>
           <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
           <XAxis 
             dataKey={nameKey} 
-            tick={{ fontSize: 11 }}
+            tick={{ fontSize: 10 }}
             interval={0}
-            angle={-15}
+            angle={-20}
             textAnchor="end"
-            height={60}
+            height={70}
           />
           <YAxis 
-            tick={{ fontSize: 11 }}
-            width={40}
+            tick={{ fontSize: 10 }}
+            width={35}
           />
           <Tooltip 
             formatter={(value) => `${value}%`}
-            contentStyle={{ fontSize: '12px' }}
+            contentStyle={{ fontSize: '11px' }}
           />
           <Legend 
-            wrapperStyle={{ fontSize: '11px' }}
-            iconSize={10}
+            wrapperStyle={{ fontSize: '10px' }}
+            iconSize={8}
           />
           <Bar dataKey={dataKey} fill={color} name="Execução (%)" radius={[4, 4, 0, 0]} />
         </BarChart>

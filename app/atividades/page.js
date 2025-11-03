@@ -101,13 +101,13 @@ function AtividadesContent() {
     return (
       <>
         <Header />
-        <main className="container mx-auto px-4 py-8">
-          <div className="mb-6">
-            <h2 className="text-3xl font-bold text-gray-900">Acompanhar Atividades</h2>
-            <p className="text-gray-600 mt-2">Selecione uma atividade para ver os projetos relacionados</p>
+        <main className="container mx-auto px-4 py-4 sm:py-8">
+          <div className="mb-4 sm:mb-6">
+            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900">Acompanhar Atividades</h2>
+            <p className="text-sm sm:text-base text-gray-600 mt-2">Selecione uma atividade para ver os projetos relacionados</p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
             {atividades.map((atividade) => {
               const eixoAtiv = getEixoById(atividade.eixoId);
               const qtdProjetos = getProjetosByAtividade(atividade.id).length;
@@ -115,14 +115,14 @@ function AtividadesContent() {
               return (
                 <Card key={atividade.id} className="hover:shadow-lg transition-shadow cursor-pointer" title={atividade.nome}>
                   <div onClick={() => router.push(`/atividades?id=${atividade.id}`)}>
-                    <div className="mb-4">
+                    <div className="mb-3 sm:mb-4">
                       <span className="text-xs font-medium px-2 py-1 rounded-full bg-gray-100 text-gray-700">
                         {eixoAtiv?.nome}
                       </span>
                     </div>
-                    <p className="text-sm text-gray-600 mb-4">{atividade.descricao}</p>
+                    <p className="text-xs sm:text-sm text-gray-600 mb-3 sm:mb-4 line-clamp-2">{atividade.descricao}</p>
                     <div className="flex items-center justify-between">
-                      <div className="text-sm text-gray-500">
+                      <div className="text-xs sm:text-sm text-gray-500">
                         {qtdProjetos} projeto{qtdProjetos !== 1 ? 's' : ''}
                       </div>
                       <ProgressBadge percentage={atividade.percentualExecucao} />
@@ -140,9 +140,9 @@ function AtividadesContent() {
   return (
     <>
       <Header />
-      <main className="container mx-auto px-4 py-8">
+      <main className="container mx-auto px-4 py-4 sm:py-8">
         {/* Breadcrumb */}
-        <div className="mb-4 flex items-center gap-2 text-sm text-gray-600">
+        <div className="mb-3 sm:mb-4 flex flex-wrap items-center gap-2 text-xs sm:text-sm text-gray-600">
           <button onClick={() => router.push('/')} className="hover:text-primary-600">
             Home
           </button>
@@ -151,48 +151,48 @@ function AtividadesContent() {
             Atividades
           </button>
           <span>/</span>
-          <span className="text-gray-900 font-medium">{atividadeSelecionada.nome}</span>
+          <span className="text-gray-900 font-medium truncate">{atividadeSelecionada.nome}</span>
         </div>
 
         {/* Cabeçalho da Atividade */}
-        <div className="mb-8">
-          <div className="flex items-start justify-between">
-            <div>
-              <h2 className="text-3xl font-bold text-gray-900 mb-2">
+        <div className="mb-6 sm:mb-8">
+          <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
+            <div className="flex-1">
+              <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">
                 {atividadeSelecionada.nome}
               </h2>
-              <p className="text-gray-600 mb-4">{atividadeSelecionada.descricao}</p>
+              <p className="text-sm sm:text-base text-gray-600 mb-3 sm:mb-4">{atividadeSelecionada.descricao}</p>
               {eixo && (
-                <span className="inline-block px-3 py-1 bg-primary-100 text-primary-700 rounded-full text-sm font-medium">
+                <span className="inline-block px-3 py-1 bg-primary-100 text-primary-700 rounded-full text-xs sm:text-sm font-medium">
                   {eixo.nome}
                 </span>
               )}
             </div>
-            <div className="text-right">
-              <div className="text-sm text-gray-500 mb-1">Execução Geral</div>
+            <div className="text-left sm:text-right flex sm:block items-center gap-2">
+              <div className="text-xs sm:text-sm text-gray-500 sm:mb-1">Execução Geral</div>
               <ProgressBadge percentage={atividadeSelecionada.percentualExecucao} size="lg" />
             </div>
           </div>
         </div>
 
         {/* KPIs */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
-          <div className="bg-white rounded-lg shadow p-6">
-            <div className="text-sm text-gray-500 mb-1">Total de Projetos</div>
-            <div className="text-3xl font-bold text-gray-900">{projetosDaAtividade.length}</div>
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 mb-6 sm:mb-8">
+          <div className="bg-white rounded-lg shadow p-4 sm:p-6">
+            <div className="text-xs sm:text-sm text-gray-500 mb-1">Total de Projetos</div>
+            <div className="text-2xl sm:text-3xl font-bold text-gray-900">{projetosDaAtividade.length}</div>
           </div>
-          <div className="bg-white rounded-lg shadow p-6">
-            <div className="text-sm text-gray-500 mb-1">Valor Total</div>
-            <div className="text-2xl font-bold text-gray-900">
+          <div className="bg-white rounded-lg shadow p-4 sm:p-6">
+            <div className="text-xs sm:text-sm text-gray-500 mb-1">Valor Total</div>
+            <div className="text-xl sm:text-2xl font-bold text-gray-900">
               {new Intl.NumberFormat('pt-BR', {
                 style: 'currency',
                 currency: 'BRL'
               }).format(atividadeSelecionada.valorTotal)}
             </div>
           </div>
-          <div className="bg-white rounded-lg shadow p-6">
-            <div className="text-sm text-gray-500 mb-1">Média de Execução</div>
-            <div className="text-3xl font-bold text-gray-900">
+          <div className="bg-white rounded-lg shadow p-4 sm:p-6">
+            <div className="text-xs sm:text-sm text-gray-500 mb-1">Média de Execução</div>
+            <div className="text-2xl sm:text-3xl font-bold text-gray-900">
               {projetosDaAtividade.length > 0
                 ? Math.round(
                     projetosDaAtividade.reduce((acc, p) => acc + p.percentualConcluido, 0) /
@@ -205,7 +205,7 @@ function AtividadesContent() {
 
         {/* Gráfico de Progresso */}
         {projetosDaAtividade.length > 0 && (
-          <Card title="Progresso dos Projetos" className="mb-8">
+          <Card title="Progresso dos Projetos" className="mb-6 sm:mb-8">
             <BarChartWidget 
               data={chartData}
               title="Percentual de Execução por Projeto"
@@ -219,7 +219,7 @@ function AtividadesContent() {
           {projetosDaAtividade.length > 0 ? (
             <DataTable columns={columns} data={projetosDaAtividade} />
           ) : (
-            <div className="text-center py-8 text-gray-500">
+            <div className="text-center py-8 text-sm sm:text-base text-gray-500">
               Nenhum projeto cadastrado nesta atividade ainda.
             </div>
           )}

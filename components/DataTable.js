@@ -12,66 +12,68 @@ export default function DataTable({ columns, data, onRowClick }) {
 
   return (
     <div className="w-full">
-      <div className="overflow-x-auto">
-        <table className="min-w-full divide-y divide-gray-200">
-          <thead className="bg-gray-50">
-            <tr>
-              {columns.map((column, index) => (
-                <th
-                  key={index}
-                  className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                >
-                  {column.header}
-                </th>
-              ))}
-            </tr>
-          </thead>
-          <tbody className="bg-white divide-y divide-gray-200">
-            {currentData.length === 0 ? (
+      <div className="overflow-x-auto -mx-4 sm:mx-0">
+        <div className="inline-block min-w-full align-middle px-4 sm:px-0">
+          <table className="min-w-full divide-y divide-gray-200">
+            <thead className="bg-gray-50">
               <tr>
-                <td colSpan={columns.length} className="px-6 py-4 text-center text-gray-500">
-                  Nenhum registro encontrado
-                </td>
+                {columns.map((column, index) => (
+                  <th
+                    key={index}
+                    className="px-4 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                  >
+                    {column.header}
+                  </th>
+                ))}
               </tr>
-            ) : (
-              currentData.map((row, rowIndex) => (
-                <tr
-                  key={rowIndex}
-                  onClick={() => onRowClick && onRowClick(row)}
-                  className={onRowClick ? 'hover:bg-gray-50 cursor-pointer' : ''}
-                >
-                  {columns.map((column, colIndex) => (
-                    <td key={colIndex} className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                      {column.render ? column.render(row) : row[column.accessor]}
-                    </td>
-                  ))}
+            </thead>
+            <tbody className="bg-white divide-y divide-gray-200">
+              {currentData.length === 0 ? (
+                <tr>
+                  <td colSpan={columns.length} className="px-4 sm:px-6 py-8 text-center text-gray-500 text-sm">
+                    Nenhum registro encontrado
+                  </td>
                 </tr>
-              ))
-            )}
-          </tbody>
-        </table>
+              ) : (
+                currentData.map((row, rowIndex) => (
+                  <tr
+                    key={rowIndex}
+                    onClick={() => onRowClick && onRowClick(row)}
+                    className={onRowClick ? 'hover:bg-gray-50 cursor-pointer' : ''}
+                  >
+                    {columns.map((column, colIndex) => (
+                      <td key={colIndex} className="px-4 sm:px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                        {column.render ? column.render(row) : row[column.accessor]}
+                      </td>
+                    ))}
+                  </tr>
+                ))
+              )}
+            </tbody>
+          </table>
+        </div>
       </div>
 
       {totalPages > 1 && (
-        <div className="px-6 py-4 flex items-center justify-between border-t border-gray-200">
-          <div className="text-sm text-gray-700">
+        <div className="px-4 sm:px-6 py-4 flex flex-col sm:flex-row items-center justify-between border-t border-gray-200 gap-3">
+          <div className="text-sm text-gray-700 text-center sm:text-left">
             Mostrando {startIndex + 1} a {Math.min(endIndex, data.length)} de {data.length} registros
           </div>
-          <div className="flex gap-2">
+          <div className="flex gap-2 items-center">
             <button
               onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
               disabled={currentPage === 1}
-              className="px-3 py-1 border border-gray-300 rounded-md text-sm disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50"
+              className="px-3 py-1.5 border border-gray-300 rounded-md text-sm disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50"
             >
               Anterior
             </button>
-            <span className="px-3 py-1 text-sm">
-              Página {currentPage} de {totalPages}
+            <span className="px-3 py-1.5 text-sm">
+              {currentPage} / {totalPages}
             </span>
             <button
               onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
               disabled={currentPage === totalPages}
-              className="px-3 py-1 border border-gray-300 rounded-md text-sm disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50"
+              className="px-3 py-1.5 border border-gray-300 rounded-md text-sm disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50"
             >
               Próxima
             </button>

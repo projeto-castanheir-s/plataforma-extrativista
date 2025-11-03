@@ -34,12 +34,12 @@ export default function ProjetoPage({ params }) {
     return (
       <>
         <Header />
-        <main className="container mx-auto px-4 py-8">
+        <main className="container mx-auto px-4 py-4 sm:py-8">
           <div className="text-center">
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">Projeto não encontrado</h2>
+            <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4">Projeto não encontrado</h2>
             <button
               onClick={() => router.push('/')}
-              className="text-primary-600 hover:text-primary-700"
+              className="text-primary-600 hover:text-primary-700 text-sm sm:text-base"
             >
               Voltar para Home
             </button>
@@ -82,39 +82,39 @@ export default function ProjetoPage({ params }) {
     {
       label: 'Dados do Projeto',
       content: (
-        <div className="space-y-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="space-y-4 sm:space-y-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
             <div>
-              <h4 className="text-sm font-medium text-gray-500 mb-1">Nome do Projeto</h4>
-              <p className="text-lg font-semibold text-gray-900">{projeto.nome}</p>
+              <h4 className="text-xs sm:text-sm font-medium text-gray-500 mb-1">Nome do Projeto</h4>
+              <p className="text-base sm:text-lg font-semibold text-gray-900">{projeto.nome}</p>
             </div>
             <div>
-              <h4 className="text-sm font-medium text-gray-500 mb-1">Responsável</h4>
-              <p className="text-lg font-semibold text-gray-900">{projeto.responsavel}</p>
+              <h4 className="text-xs sm:text-sm font-medium text-gray-500 mb-1">Responsável</h4>
+              <p className="text-base sm:text-lg font-semibold text-gray-900">{projeto.responsavel}</p>
             </div>
             <div>
-              <h4 className="text-sm font-medium text-gray-500 mb-1">Eixo</h4>
-              <p className="text-lg font-semibold text-gray-900">{eixo?.nome}</p>
+              <h4 className="text-xs sm:text-sm font-medium text-gray-500 mb-1">Eixo</h4>
+              <p className="text-base sm:text-lg font-semibold text-gray-900">{eixo?.nome}</p>
             </div>
             <div>
-              <h4 className="text-sm font-medium text-gray-500 mb-1">Atividade</h4>
-              <p className="text-lg font-semibold text-gray-900">{atividade?.nome}</p>
+              <h4 className="text-xs sm:text-sm font-medium text-gray-500 mb-1">Atividade</h4>
+              <p className="text-base sm:text-lg font-semibold text-gray-900">{atividade?.nome}</p>
             </div>
             <div>
-              <h4 className="text-sm font-medium text-gray-500 mb-1">Data de Início</h4>
-              <p className="text-lg font-semibold text-gray-900">
+              <h4 className="text-xs sm:text-sm font-medium text-gray-500 mb-1">Data de Início</h4>
+              <p className="text-base sm:text-lg font-semibold text-gray-900">
                 {new Date(projeto.dataInicio).toLocaleDateString('pt-BR')}
               </p>
             </div>
             <div>
-              <h4 className="text-sm font-medium text-gray-500 mb-1">Data de Término</h4>
-              <p className="text-lg font-semibold text-gray-900">
+              <h4 className="text-xs sm:text-sm font-medium text-gray-500 mb-1">Data de Término</h4>
+              <p className="text-base sm:text-lg font-semibold text-gray-900">
                 {new Date(projeto.dataFim).toLocaleDateString('pt-BR')}
               </p>
             </div>
             <div>
-              <h4 className="text-sm font-medium text-gray-500 mb-1">Valor Total</h4>
-              <p className="text-lg font-semibold text-gray-900">
+              <h4 className="text-xs sm:text-sm font-medium text-gray-500 mb-1">Valor Total</h4>
+              <p className="text-base sm:text-lg font-semibold text-gray-900">
                 {new Intl.NumberFormat('pt-BR', {
                   style: 'currency',
                   currency: 'BRL'
@@ -122,37 +122,37 @@ export default function ProjetoPage({ params }) {
               </p>
             </div>
             <div>
-              <h4 className="text-sm font-medium text-gray-500 mb-1">Status</h4>
-              <span className="inline-flex px-3 py-1 bg-blue-100 text-blue-800 rounded-full font-semibold">
+              <h4 className="text-xs sm:text-sm font-medium text-gray-500 mb-1">Status</h4>
+              <span className="inline-flex px-2 sm:px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-xs sm:text-sm font-semibold">
                 {projeto.status}
               </span>
             </div>
           </div>
           <div>
-            <h4 className="text-sm font-medium text-gray-500 mb-2">Descrição</h4>
-            <p className="text-gray-700 leading-relaxed">{projeto.descricao}</p>
+            <h4 className="text-xs sm:text-sm font-medium text-gray-500 mb-2">Descrição</h4>
+            <p className="text-sm sm:text-base text-gray-700 leading-relaxed">{projeto.descricao}</p>
           </div>
 
           {/* Módulos */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 mt-4 sm:mt-6">
             <Card title="Módulo Executor" className="bg-gradient-to-br from-blue-50 to-blue-100">
-              <p className="text-sm text-gray-700 mb-4">
+              <p className="text-xs sm:text-sm text-gray-700 mb-3 sm:mb-4">
                 Informações sobre a execução física do projeto
               </p>
               <button 
                 onClick={() => setActiveTab(3)}
-                className="text-primary-600 hover:text-primary-700 font-medium text-sm"
+                className="text-primary-600 hover:text-primary-700 font-medium text-xs sm:text-sm"
               >
                 Ver Detalhes →
               </button>
             </Card>
             <Card title="Módulo Financeiro" className="bg-gradient-to-br from-green-50 to-green-100">
-              <p className="text-sm text-gray-700 mb-4">
+              <p className="text-xs sm:text-sm text-gray-700 mb-3 sm:mb-4">
                 Informações financeiras e orçamentárias
               </p>
               <button 
                 onClick={() => setActiveTab(1)}
-                className="text-green-600 hover:text-green-700 font-medium text-sm"
+                className="text-green-600 hover:text-green-700 font-medium text-xs sm:text-sm"
               >
                 Ver Detalhes →
               </button>
@@ -164,25 +164,25 @@ export default function ProjetoPage({ params }) {
     {
       label: 'Financeiro',
       content: (
-        <div className="space-y-6">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div className="space-y-4 sm:space-y-6">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4">
             <Kpi 
               label="Valor Total"
               value={valorTotal}
               percentage={percentualFinanceiro}
             />
-            <div className="bg-green-50 rounded-lg p-6">
-              <div className="text-sm font-medium text-green-700 mb-2">Valor Pago</div>
-              <div className="text-2xl font-bold text-green-900">
+            <div className="bg-green-50 rounded-lg p-4 sm:p-6">
+              <div className="text-xs sm:text-sm font-medium text-green-700 mb-2">Valor Pago</div>
+              <div className="text-xl sm:text-2xl font-bold text-green-900">
                 {new Intl.NumberFormat('pt-BR', {
                   style: 'currency',
                   currency: 'BRL'
                 }).format(valorPago)}
               </div>
             </div>
-            <div className="bg-yellow-50 rounded-lg p-6">
-              <div className="text-sm font-medium text-yellow-700 mb-2">Saldo Pendente</div>
-              <div className="text-2xl font-bold text-yellow-900">
+            <div className="bg-yellow-50 rounded-lg p-4 sm:p-6">
+              <div className="text-xs sm:text-sm font-medium text-yellow-700 mb-2">Saldo Pendente</div>
+              <div className="text-xl sm:text-2xl font-bold text-yellow-900">
                 {new Intl.NumberFormat('pt-BR', {
                   style: 'currency',
                   currency: 'BRL'
@@ -192,7 +192,7 @@ export default function ProjetoPage({ params }) {
           </div>
 
           <Card title="Resumo Financeiro">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
               <div>
                 <BarChartWidget 
                   data={[
@@ -203,20 +203,20 @@ export default function ProjetoPage({ params }) {
                   color="#10b981"
                 />
               </div>
-              <div className="space-y-4">
-                <div className="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
-                  <span className="text-sm font-medium text-gray-700">Total de Parcelas</span>
-                  <span className="text-lg font-bold text-gray-900">{cronograma.length}</span>
+              <div className="space-y-3 sm:space-y-4">
+                <div className="flex items-center justify-between p-3 sm:p-4 bg-gray-50 rounded-lg">
+                  <span className="text-xs sm:text-sm font-medium text-gray-700">Total de Parcelas</span>
+                  <span className="text-base sm:text-lg font-bold text-gray-900">{cronograma.length}</span>
                 </div>
-                <div className="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
-                  <span className="text-sm font-medium text-gray-700">Parcelas Pagas</span>
-                  <span className="text-lg font-bold text-green-600">
+                <div className="flex items-center justify-between p-3 sm:p-4 bg-gray-50 rounded-lg">
+                  <span className="text-xs sm:text-sm font-medium text-gray-700">Parcelas Pagas</span>
+                  <span className="text-base sm:text-lg font-bold text-green-600">
                     {cronograma.filter(cr => cr.status === 'Pago').length}
                   </span>
                 </div>
-                <div className="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
-                  <span className="text-sm font-medium text-gray-700">Parcelas Atrasadas</span>
-                  <span className="text-lg font-bold text-red-600">
+                <div className="flex items-center justify-between p-3 sm:p-4 bg-gray-50 rounded-lg">
+                  <span className="text-xs sm:text-sm font-medium text-gray-700">Parcelas Atrasadas</span>
+                  <span className="text-base sm:text-lg font-bold text-red-600">
                     {cronograma.filter(cr => cr.status === 'Atrasado').length}
                   </span>
                 </div>
@@ -355,9 +355,9 @@ export default function ProjetoPage({ params }) {
   return (
     <>
       <Header />
-      <main className="container mx-auto px-4 py-8">
+      <main className="container mx-auto px-4 py-4 sm:py-8">
         {/* Breadcrumb */}
-        <div className="mb-4 flex items-center gap-2 text-sm text-gray-600">
+        <div className="mb-3 sm:mb-4 flex flex-wrap items-center gap-2 text-xs sm:text-sm text-gray-600">
           <button onClick={() => router.push('/')} className="hover:text-primary-600">
             Home
           </button>
@@ -366,21 +366,21 @@ export default function ProjetoPage({ params }) {
             Atividades
           </button>
           <span>/</span>
-          <span className="text-gray-900 font-medium">{projeto.nome}</span>
+          <span className="text-gray-900 font-medium truncate max-w-[150px] sm:max-w-none">{projeto.nome}</span>
         </div>
 
         {/* Cabeçalho do Projeto */}
-        <div className="bg-white rounded-lg shadow-md p-6 mb-8">
-          <div className="flex items-start justify-between mb-4">
-            <div>
-              <h2 className="text-3xl font-bold text-gray-900 mb-2">{projeto.nome}</h2>
-              <div className="flex items-center gap-4 text-sm text-gray-600">
+        <div className="bg-white rounded-lg shadow-md p-4 sm:p-6 mb-6 sm:mb-8">
+          <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between mb-4 gap-3">
+            <div className="flex-1">
+              <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">{projeto.nome}</h2>
+              <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 text-xs sm:text-sm text-gray-600">
                 <span className="flex items-center gap-1">
-                  <Calendar size={16} />
-                  {new Date(projeto.dataInicio).toLocaleDateString('pt-BR')} - {new Date(projeto.dataFim).toLocaleDateString('pt-BR')}
+                  <Calendar size={14} className="sm:w-4 sm:h-4" />
+                  <span className="truncate">{new Date(projeto.dataInicio).toLocaleDateString('pt-BR')} - {new Date(projeto.dataFim).toLocaleDateString('pt-BR')}</span>
                 </span>
                 <span className="flex items-center gap-1">
-                  <DollarSign size={16} />
+                  <DollarSign size={14} className="sm:w-4 sm:h-4" />
                   {new Intl.NumberFormat('pt-BR', {
                     style: 'currency',
                     currency: 'BRL'
@@ -392,43 +392,43 @@ export default function ProjetoPage({ params }) {
           </div>
 
           {/* KPIs rápidos */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6">
-            <div className="flex items-center gap-3 p-3 bg-blue-50 rounded-lg">
-              <div className="p-2 bg-blue-100 rounded-lg">
-                <TrendingUp className="text-blue-600" size={20} />
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-4 mt-4 sm:mt-6">
+            <div className="flex items-center gap-2 sm:gap-3 p-2 sm:p-3 bg-blue-50 rounded-lg">
+              <div className="p-1.5 sm:p-2 bg-blue-100 rounded-lg flex-shrink-0">
+                <TrendingUp className="text-blue-600" size={16} />
               </div>
-              <div>
+              <div className="min-w-0">
                 <div className="text-xs text-gray-600">Execução</div>
-                <div className="text-lg font-bold text-gray-900">{projeto.percentualConcluido}%</div>
+                <div className="text-base sm:text-lg font-bold text-gray-900">{projeto.percentualConcluido}%</div>
               </div>
             </div>
-            <div className="flex items-center gap-3 p-3 bg-green-50 rounded-lg">
-              <div className="p-2 bg-green-100 rounded-lg">
-                <DollarSign className="text-green-600" size={20} />
+            <div className="flex items-center gap-2 sm:gap-3 p-2 sm:p-3 bg-green-50 rounded-lg">
+              <div className="p-1.5 sm:p-2 bg-green-100 rounded-lg flex-shrink-0">
+                <DollarSign className="text-green-600" size={16} />
               </div>
-              <div>
+              <div className="min-w-0">
                 <div className="text-xs text-gray-600">Financeiro</div>
-                <div className="text-lg font-bold text-gray-900">{percentualFinanceiro}%</div>
+                <div className="text-base sm:text-lg font-bold text-gray-900">{percentualFinanceiro}%</div>
               </div>
             </div>
-            <div className="flex items-center gap-3 p-3 bg-purple-50 rounded-lg">
-              <div className="p-2 bg-purple-100 rounded-lg">
-                <CheckCircle className="text-purple-600" size={20} />
+            <div className="flex items-center gap-2 sm:gap-3 p-2 sm:p-3 bg-purple-50 rounded-lg">
+              <div className="p-1.5 sm:p-2 bg-purple-100 rounded-lg flex-shrink-0">
+                <CheckCircle className="text-purple-600" size={16} />
               </div>
-              <div>
+              <div className="min-w-0">
                 <div className="text-xs text-gray-600">Marcos</div>
-                <div className="text-lg font-bold text-gray-900">
+                <div className="text-base sm:text-lg font-bold text-gray-900">
                   {marcos.filter(m => m.concluido).length}/{marcos.length}
                 </div>
               </div>
             </div>
-            <div className="flex items-center gap-3 p-3 bg-orange-50 rounded-lg">
-              <div className="p-2 bg-orange-100 rounded-lg">
-                <Calendar className="text-orange-600" size={20} />
+            <div className="flex items-center gap-2 sm:gap-3 p-2 sm:p-3 bg-orange-50 rounded-lg">
+              <div className="p-1.5 sm:p-2 bg-orange-100 rounded-lg flex-shrink-0">
+                <Calendar className="text-orange-600" size={16} />
               </div>
-              <div>
+              <div className="min-w-0">
                 <div className="text-xs text-gray-600">Responsável</div>
-                <div className="text-sm font-semibold text-gray-900">{projeto.responsavel}</div>
+                <div className="text-xs sm:text-sm font-semibold text-gray-900 truncate">{projeto.responsavel}</div>
               </div>
             </div>
           </div>

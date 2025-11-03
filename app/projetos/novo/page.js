@@ -102,9 +102,9 @@ export default function NovoProjetoPage() {
   return (
     <>
       <Header />
-      <main className="container mx-auto px-4 py-8">
+      <main className="container mx-auto px-4 py-4 sm:py-8">
         {/* Breadcrumb */}
-        <div className="mb-4 flex items-center gap-2 text-sm text-gray-600">
+        <div className="mb-3 sm:mb-4 flex items-center gap-2 text-xs sm:text-sm text-gray-600">
           <button onClick={() => router.push('/')} className="hover:text-primary-600">
             Home
           </button>
@@ -114,10 +114,10 @@ export default function NovoProjetoPage() {
 
         <div className="max-w-4xl mx-auto">
           <Card title="Criar Novo Projeto">
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
               {/* Nome do Projeto */}
               <div>
-                <label htmlFor="nome" className="block text-sm font-medium text-gray-700 mb-2">
+                <label htmlFor="nome" className="block text-xs sm:text-sm font-medium text-gray-700 mb-1 sm:mb-2">
                   Nome do Projeto *
                 </label>
                 <input
@@ -126,17 +126,17 @@ export default function NovoProjetoPage() {
                   name="nome"
                   value={formData.nome}
                   onChange={handleChange}
-                  className={`w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 ${
+                  className={`w-full px-3 sm:px-4 py-2 text-sm sm:text-base border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 ${
                     errors.nome ? 'border-red-500' : 'border-gray-300'
                   }`}
                   placeholder="Ex: Projeto de construção de Instalações para Farmácia"
                 />
-                {errors.nome && <p className="mt-1 text-sm text-red-600">{errors.nome}</p>}
+                {errors.nome && <p className="mt-1 text-xs sm:text-sm text-red-600">{errors.nome}</p>}
               </div>
 
               {/* Atividade */}
               <div>
-                <label htmlFor="atividadeId" className="block text-sm font-medium text-gray-700 mb-2">
+                <label htmlFor="atividadeId" className="block text-xs sm:text-sm font-medium text-gray-700 mb-1 sm:mb-2">
                   Atividade *
                 </label>
                 <select
@@ -144,7 +144,7 @@ export default function NovoProjetoPage() {
                   name="atividadeId"
                   value={formData.atividadeId}
                   onChange={handleChange}
-                  className={`w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 ${
+                  className={`w-full px-3 sm:px-4 py-2 text-sm sm:text-base border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 ${
                     errors.atividadeId ? 'border-red-500' : 'border-gray-300'
                   }`}
                 >
@@ -159,12 +159,12 @@ export default function NovoProjetoPage() {
                     </optgroup>
                   ))}
                 </select>
-                {errors.atividadeId && <p className="mt-1 text-sm text-red-600">{errors.atividadeId}</p>}
+                {errors.atividadeId && <p className="mt-1 text-xs sm:text-sm text-red-600">{errors.atividadeId}</p>}
               </div>
 
               {/* Descrição */}
               <div>
-                <label htmlFor="descricao" className="block text-sm font-medium text-gray-700 mb-2">
+                <label htmlFor="descricao" className="block text-xs sm:text-sm font-medium text-gray-700 mb-1 sm:mb-2">
                   Descrição *
                 </label>
                 <textarea
@@ -173,17 +173,17 @@ export default function NovoProjetoPage() {
                   value={formData.descricao}
                   onChange={handleChange}
                   rows="4"
-                  className={`w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 ${
+                  className={`w-full px-3 sm:px-4 py-2 text-sm sm:text-base border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 ${
                     errors.descricao ? 'border-red-500' : 'border-gray-300'
                   }`}
                   placeholder="Descreva os objetivos e escopo do projeto"
                 />
-                {errors.descricao && <p className="mt-1 text-sm text-red-600">{errors.descricao}</p>}
+                {errors.descricao && <p className="mt-1 text-xs sm:text-sm text-red-600">{errors.descricao}</p>}
               </div>
 
               {/* Valor Total */}
               <div>
-                <label htmlFor="valorTotal" className="block text-sm font-medium text-gray-700 mb-2">
+                <label htmlFor="valorTotal" className="block text-xs sm:text-sm font-medium text-gray-700 mb-1 sm:mb-2">
                   Valor Total (R$) *
                 </label>
                 <input
@@ -194,18 +194,18 @@ export default function NovoProjetoPage() {
                   onChange={handleChange}
                   step="0.01"
                   min="0"
-                  className={`w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 ${
+                  className={`w-full px-3 sm:px-4 py-2 text-sm sm:text-base border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 ${
                     errors.valorTotal ? 'border-red-500' : 'border-gray-300'
                   }`}
                   placeholder="0.00"
                 />
-                {errors.valorTotal && <p className="mt-1 text-sm text-red-600">{errors.valorTotal}</p>}
+                {errors.valorTotal && <p className="mt-1 text-xs sm:text-sm text-red-600">{errors.valorTotal}</p>}
               </div>
 
               {/* Datas */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
                 <div>
-                  <label htmlFor="dataInicio" className="block text-sm font-medium text-gray-700 mb-2">
+                  <label htmlFor="dataInicio" className="block text-xs sm:text-sm font-medium text-gray-700 mb-1 sm:mb-2">
                     Data de Início *
                   </label>
                   <input
@@ -214,15 +214,15 @@ export default function NovoProjetoPage() {
                     name="dataInicio"
                     value={formData.dataInicio}
                     onChange={handleChange}
-                    className={`w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 ${
+                    className={`w-full px-3 sm:px-4 py-2 text-sm sm:text-base border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 ${
                       errors.dataInicio ? 'border-red-500' : 'border-gray-300'
                     }`}
                   />
-                  {errors.dataInicio && <p className="mt-1 text-sm text-red-600">{errors.dataInicio}</p>}
+                  {errors.dataInicio && <p className="mt-1 text-xs sm:text-sm text-red-600">{errors.dataInicio}</p>}
                 </div>
 
                 <div>
-                  <label htmlFor="dataFim" className="block text-sm font-medium text-gray-700 mb-2">
+                  <label htmlFor="dataFim" className="block text-xs sm:text-sm font-medium text-gray-700 mb-1 sm:mb-2">
                     Data de Término *
                   </label>
                   <input
@@ -231,17 +231,17 @@ export default function NovoProjetoPage() {
                     name="dataFim"
                     value={formData.dataFim}
                     onChange={handleChange}
-                    className={`w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 ${
+                    className={`w-full px-3 sm:px-4 py-2 text-sm sm:text-base border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 ${
                       errors.dataFim ? 'border-red-500' : 'border-gray-300'
                     }`}
                   />
-                  {errors.dataFim && <p className="mt-1 text-sm text-red-600">{errors.dataFim}</p>}
+                  {errors.dataFim && <p className="mt-1 text-xs sm:text-sm text-red-600">{errors.dataFim}</p>}
                 </div>
               </div>
 
               {/* Responsável */}
               <div>
-                <label htmlFor="responsavel" className="block text-sm font-medium text-gray-700 mb-2">
+                <label htmlFor="responsavel" className="block text-xs sm:text-sm font-medium text-gray-700 mb-1 sm:mb-2">
                   Responsável *
                 </label>
                 <select
@@ -249,7 +249,7 @@ export default function NovoProjetoPage() {
                   name="responsavel"
                   value={formData.responsavel}
                   onChange={handleChange}
-                  className={`w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 ${
+                  className={`w-full px-3 sm:px-4 py-2 text-sm sm:text-base border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 ${
                     errors.responsavel ? 'border-red-500' : 'border-gray-300'
                   }`}
                 >
@@ -261,21 +261,21 @@ export default function NovoProjetoPage() {
                   ))}
                   <option value="Outro">Outro</option>
                 </select>
-                {errors.responsavel && <p className="mt-1 text-sm text-red-600">{errors.responsavel}</p>}
+                {errors.responsavel && <p className="mt-1 text-xs sm:text-sm text-red-600">{errors.responsavel}</p>}
               </div>
 
               {/* Botões */}
-              <div className="flex gap-4 pt-4 border-t border-gray-200">
-                <PrimaryButton type="submit" className="flex items-center gap-2">
-                  <Save size={18} />
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-4 border-t border-gray-200">
+                <PrimaryButton type="submit" className="flex items-center justify-center gap-2 w-full sm:w-auto">
+                  <Save size={16} className="sm:w-[18px] sm:h-[18px]" />
                   Salvar Projeto
                 </PrimaryButton>
                 <button
                   type="button"
                   onClick={handleCancel}
-                  className="flex items-center gap-2 px-6 py-2.5 bg-gray-200 text-gray-700 font-medium rounded-lg hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2"
+                  className="flex items-center justify-center gap-2 px-4 sm:px-6 py-2.5 bg-gray-200 text-gray-700 font-medium rounded-lg hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 w-full sm:w-auto text-sm sm:text-base"
                 >
-                  <X size={18} />
+                  <X size={16} className="sm:w-[18px] sm:h-[18px]" />
                   Cancelar
                 </button>
               </div>
